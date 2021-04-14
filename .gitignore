@@ -58,4 +58,4 @@ typings/
 .env
 
 # ignore built files
-dist
+# dist

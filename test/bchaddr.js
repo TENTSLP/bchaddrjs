@@ -11,371 +11,99 @@ var bchaddr = require('..')
 
 describe('bchaddr', function () {
   var LEGACY_MAINNET_P2PKH_ADDRESSES = [
-    '1B9UNtBfkkpgt8kVbwLN9ktE62QKnMbDzR',
-    '185K5yAfcrARrHjNVt4iAUHtkYqcogF4km',
-    '1EUrmffDt4SQQkGVfmDTyFcp57PuByeadW',
-    '1H6YWsFBxvDx6Ce9dyUFZvjG29npxQpBpR',
-    '15z9kQvBaZmTGRTRbP3K1VBM3BQvRsj4U4',
-    '1P238gziZdeS5Wj9nqLhQHSBK2Lz6zPSke',
-    '13WamBttqMB9AHNovKBCeLFGC5sbN4iZkh',
-    '17Sa1fdVXh2NVgcn5xoWzTLGNivg9gUDQ7',
-    '1tQ2P2q5cVERY8AkGD4K8RGc6NmZQVTKN',
-    '1FJSGaq7Wip2ADSJboxMXniPhnYM8ym5Ri',
-    '1GxjvJnjF6t29gDnX4jF3u25u5JRqANYPV',
-    '1N7gqB2GtgJG8ap3uwRoKyrcrrSTa4qfXu',
-    '1JG6fXqEiu9H2fktGxqpFfGGLdy6ie7QgY',
-    '14ipzRgYAbSZUnmeRNhhrPMQ8XQrzGg4wo',
-    '185FScTRCtVXRoy5gSDbuLnnQaQWqCK4A1',
-    '1NPRQpCNaeVvZLYw6Z3Y1XkKxLt9BrFTn5',
-    '1Pa8bRApFwCZ8rkgCJh9mfUmj4XJMUYdom',
-    '13HmTnwyKacGJCt2WseTReCeEAtG5ZAyci',
-    '1Mdob5JY1yuwoj6y76Vf3AQpoqUH5Aft8z',
-    '1D8zGeRj3Vkns6VwKxwNoW2mDsxF25w2Zy'
+    's1XMDbagKV6t7iMiv1xBbTWnri3VaEQuqwu',
+    's1UH4JffKMCDrgWhnutuwUECXNZvsJ8A4dn',
+    's1agbzN9scQVqEyEv5n4hH1XSh8V9bwhPgb'
   ]
 
   var LEGACY_MAINNET_P2SH_ADDRESSES = [
-    '3BqVJRg7Jf94yJSvj2zxaPFAEYh3MAyyw9',
-    '38mL1Wf7AkUowTRocyjJb6epu58LSafEYf',
-    '3FAshD9fRxknVuxvnrt4PsykDdgckmK7xD',
-    '3HnZSQjdWpYLBNLam58qzZ6CAg5YXBddBW',
-    '36gAfxQd8U5qMb9riUhuS7YHBhhdvjr8u1',
-    '3Pi44EVA7XxpAgRauw1Hpuo7TYdhd7WMon',
-    '34CbgjPLPFVXFT5F3Qqo4xcCLcAJwvkM85',
-    '388awD7w5bLkarKDD4U7R5hCXFDPmHuWW7',
-    '32aQwvXGdWocWhpbsMsejknCkcfVB4ivTM',
-    '3FzTC8KZ4d8QFP8jiucwxR5KrJq4bcevn7',
-    '3HekqrHAo1CQEqvDeAPqUXP23bb9Sf9WoA',
-    '3NohkiWiSaceDkWV336PkcDZ1NjBBWBewT',
-    '3Jx7b5KgGoTf7qTKQ4WQgHdCVAFpCKiqsB',
-    '35QquyAyiVkwZxU5YUNJH1iLH3haZ5TEfC',
-    '38mGN9wrknouWyfWoXtCKy9iZ6hEMRGsyp',
-    '3P5SLMgp8YpJeWFNDei8SA7G6sArkNKQKL',
-    '3QG9WxfFoqWwE2T7KQMkCHqhsap1waSfDu',
-    '33ynPLSQsUvePNaTdyK3rGZaNhAyfeAmbT',
-    '3NKpWcnyZtEKttoQECAFTnmkxMkzgbT4WX',
-    '3Dq1CBvAbQ5AxGCNT4byE8PhNQExZcR6Q2'
+    's3Y3EX8Am31CVoXRM93rBt99nrZnHjCmRkf',
+    's3Uy5ED9ku6YEmgQE2zaXtrZTX6DatCdTcn',
+    's3bNcuueKAJpDL8wMCsjHhdtNqemsBFazWk'
   ]
 
   var LEGACY_TESTNET_P2PKH_ADDRESSES = [
-    'mqfRfwGeZnFwfFE7KWJjyg6Yx212iGi6Fi',
-    'mnbGP2FeRsbgdQCzDT35zPWDcYSKm4wrcg',
-    'mtzp4ikCh5sfBrk7PLBqoAq8w6zc48PsGn',
-    'mwcVovLAmwfCsK7mMYSdPqwat9PXqcMiFt',
-    'mkW73U1APbCi3Xw3Jx1gqQPfuB1dHFDiEU',
-    'n3XzRk5hNf5grdCmWQK5ECeWB1wgzzYzZd',
-    'mi2Y4EyseNcPwPrRdt9aUFTb45UJHNgtbL',
-    'mmxXJiiULiTdGo6PoXmtpNYbEiXP2v746S',
-    'mgQMKS7otdvVCebnTqBS93dbU5yUZPsANB',
-    'mupPZdv6KkFGwKuvKNvjMhviZn93yznq73',
-    'mwUhDMsi48KGvnhQEdhcspEQm4u8o754bx',
-    'n2de8E7FhhjWuhHfdWQB9u4wir3AXqspCt',
-    'mxn3xavDXvaXonEVzXpC5aUbCdZoaTEB2g',
-    'mjEnHUmWycspFuFG8wg5gJZizX1ZtEF1XN',
-    'mnbCjfYQ1uvnCvShQ1ByjG17Ga1Dk3RTXN',
-    'n2uNhsHMPfwBLT2Yp81uqSxepLUr6zCnCz',
-    'n465tUFo4xdouyEHusfXbah6b481K5Nivk',
-    'mhoikr2x8c3X5KMeEScqFZQy6AUy4GeR4M',
-    'n29kt8PWq1MCaqaapfU2s5d9fq4yytS1xJ',
-    'msewZhWhrXC3eCyZ3XukdRF65sYwtbmARy'
+    'tmKrpi46D7k7nd1zqD6TE9EetwfgE2sHgcs',
+    'tmGnfR95CyqTXbAyi73Ba9x4ZcC7X7jErWM',
+    'tmPCD6qZmF3jW9dWqGvLKxjPUvkfoXVuWoH'
   ]
 
   var LEGACY_TESTNET_P2SH_ADDRESSES = [
-    '2N3PhNAc8v7eRB65UQAcqCLERStuD93JXLD',
-    '2MzKY5Fb8nCzA9F4MJ7MBD3e67RLWFE1ciP',
-    '2N6j5kx5h3RG8hhbUTzVw1py1RytnZNYoXo',
-    '2N9LmW9ff8H3gP9y8SCkicW5TP2HiFpeK4z',
-    '2MxENjhLejvbBZNnQPcKn44XYQ3uoiBT3fF',
-    '2NFGG7yRBizUANU48b4dASrnNftqsNwzSM1',
-    '2MukokUKMzhzsTEhniYTfgubTYxNUi6PtTX',
-    '2Mygnzx3xh3r6ndwktC5z32gTjbRZXkJpFr',
-    '2Mt8d1fTJEyJxiVT9YVVXMhmTxxsexLdJiE',
-    '2N7YfFsFag5dkTAmHQ3EpaN4b4f3EPkwQkk',
-    '2N9CxubDCQThkSdYmKJ1i6UNHFwoKBxp2Hj',
-    '2NEMupTSk437zRY92iAiGNZCpDiwLvwnZEL',
-    '2NAWKepFhtFy1Kd5s5C8HJEcThWTyzKiNGA',
-    '2Mvy3yi71KxGHmk6dDbzAtxhbVPukK6MD5u',
-    '2MzKURtstNFKFimJ4UfW4wv8ymSuQCcZPN2',
-    '2NEdeQ6cqk1KerHsutnL1476XKDP2agcCh5',
-    '2NFpMahbHRJ2HRp5ezXycpEpy5w2BmnVM9W',
-    '2MuXzT5NSUwRzbAD1K6vvUDYqb3P9RUvPgK',
-    '2NDt2aMj1BLjg6gRwuKn85jm2AhyAV8e2VF',
-    '2N5PDFvrCCraXA3pv8CDqr5NxakT8KJb3Gg'
+    't2GhHMSCP9SY37e5ZbCp8FpXibh7J3g3vCm',
+    't2Dd84XBP1Xsn5o4SV9YUGXwPGDYb2T6L6R',
+    't2L2fkDfwGk9keFbZf2hE5KGJan6sPt52d8'
   ]
-
+  /*
   var BITPAY_MAINNET_P2PKH_ADDRESSES = [
     'CScMwvXjdooDnGevHgfHjGWFi9cjk75Aaj',
     'CPYCf1WjVu8xkRdoBdPdjyuvNg42oA7g3o',
-    'CVwkLi1Hm7QwJtAvMWYPYmEqhEcK4KW3my',
-    'CYZS5ubFqyCUzLYaKioB9SMHeH1Eno9teV',
-    'CMT3KTGFTcjzAZMrH8NEazoNfJdLLwdA2P',
-    'CeUvhjLnSgcxyedaUafcyo4Cw9ZPwGq9JJ',
-    'CJyULEExiQ9g4RHEc4W8DqsHpD61DzD2KS',
-    'CNuTahyZQjzuPpXCmi8SZxxHzr966Y3NWT',
-    'CHMHbRNtxfTmKg2bS1Xyte3JEDbBZJdBDR',
-    'CWmKqdBBPmnZ4MLjHZHH7JLRKukm2ZLsY3',
-    'CYRdVM8o89rZ3p8DCp4AdQe7XCWqo98EJW',
-    'CdaaQDNLmjGo2iiUbgkiuVUeUyesW7zuM3',
-    'CZizEaBJbx7ovofJxiAjqAtHxmBWaYnQ8e',
-    'CLBiZU2c3eR6Nvg5782dRtyRkedGxq5zep',
-    'CPY91eoV5wU4KwsWNBYXUrQp2hcvm6nds4',
-    'CdrJyrYSThUTTUTMnJNTb3NMaU6Z4RU7ZN',
-    'Cf32ATWt8zB62zf6t425MB6oMBjiHc6XZf',
-    'CJkf2qJ3CdaoCLnTCcyP19pfrJ6fyRmeF4',
-    'Cd6hA7ebu2tUhs1Pnqpacg2rRxgh4RX3ij',
-    'CUbsqgmnvYjKmEQN1iGJP1enr1Aet3jrNW'
+    'CVwkLi1Hm7QwJtAvMWYPYmEqhEcK4KW3my'
   ]
 
   var BITPAY_MAINNET_P2SH_ADDRESSES = [
     'HGfbmE7C9yMjbUKxaif7YmmhGCi4FN8hzH',
     'HDbSUK6C24hUZdJqUfPTZVBMvj9MGEzYSY',
-    'HKzzA1akHGyT85qxeYYDNGWHFHhddvQabB',
-    'HNcfuDAiN8kzoYDccknzxwcjCL6ZLVoQNQ',
-    'HBWH8kqhynJVym2taAN4QW4pDMiepA7r24',
-    'HUYAX2vExrBUnrJcmcfSoJKeVCeiW7ZdQA',
-    'H92i9XpREZiBscxGu6Vx3M8jNGBKqscBBB',
-    'HCxhQ1Z1vuZRD2CF4k8GPUDjYuEQdZhDyJ',
-    'H7QXQixMUq2H8shdj3Xoi9JjnGgW4UtQvF',
-    'HLpZevkduwM4sZ1mabH6vobrsxr5XLQ9Xh',
-    'HNUsJeiFeKR4s1oFVr3zSuuZ5FcAJ5fEvi',
-    'HTdpDWwoHtqJqvPWtikYizk632kC3jeVq5',
-    'HPnE3skm87gKk1LMFkAZeg9jWpGq5JcGD2',
-    'HAExNmc4ZoycC8M7QA2TFQEsJhibS24Sff',
-    'HDbNpxNwc72a99YYfDYMJMgFakiFCURWsc',
-    'HTuYoA7tys2yGg8Q5LNHQYdo8XBsZkPfms',
-    'HV6Fym6Lf9jbrCL9B61uAgNEuEq2mwoPKw',
-    'H8otr8sVio9K1YTVVeyCpf67QMBzV5ieHM',
-    'HT9vyRE4RCSzX4gS5spQSBJHz1n1ZBCcYM',
-    'HJf7ezMFSiHqaS5QJkG8CWvEQ4FyTTnjMB'
+    'HKzzA1akHGyT85qxeYYDNGWHFHhddvQabB'
   ]
 
   var BITPAY_TESTNET_P2PKH_ADDRESSES = [
     'mqfRfwGeZnFwfFE7KWJjyg6Yx212iGi6Fi',
     'mnbGP2FeRsbgdQCzDT35zPWDcYSKm4wrcg',
-    'mtzp4ikCh5sfBrk7PLBqoAq8w6zc48PsGn',
-    'mwcVovLAmwfCsK7mMYSdPqwat9PXqcMiFt',
-    'mkW73U1APbCi3Xw3Jx1gqQPfuB1dHFDiEU',
-    'n3XzRk5hNf5grdCmWQK5ECeWB1wgzzYzZd',
-    'mi2Y4EyseNcPwPrRdt9aUFTb45UJHNgtbL',
-    'mmxXJiiULiTdGo6PoXmtpNYbEiXP2v746S',
-    'mgQMKS7otdvVCebnTqBS93dbU5yUZPsANB',
-    'mupPZdv6KkFGwKuvKNvjMhviZn93yznq73',
-    'mwUhDMsi48KGvnhQEdhcspEQm4u8o754bx',
-    'n2de8E7FhhjWuhHfdWQB9u4wir3AXqspCt',
-    'mxn3xavDXvaXonEVzXpC5aUbCdZoaTEB2g',
-    'mjEnHUmWycspFuFG8wg5gJZizX1ZtEF1XN',
-    'mnbCjfYQ1uvnCvShQ1ByjG17Ga1Dk3RTXN',
-    'n2uNhsHMPfwBLT2Yp81uqSxepLUr6zCnCz',
-    'n465tUFo4xdouyEHusfXbah6b481K5Nivk',
-    'mhoikr2x8c3X5KMeEScqFZQy6AUy4GeR4M',
-    'n29kt8PWq1MCaqaapfU2s5d9fq4yytS1xJ',
-    'msewZhWhrXC3eCyZ3XukdRF65sYwtbmARy'
+    'mtzp4ikCh5sfBrk7PLBqoAq8w6zc48PsGn'
   ]
 
   var BITPAY_TESTNET_P2SH_ADDRESSES = [
     '2N3PhNAc8v7eRB65UQAcqCLERStuD93JXLD',
     '2MzKY5Fb8nCzA9F4MJ7MBD3e67RLWFE1ciP',
-    '2N6j5kx5h3RG8hhbUTzVw1py1RytnZNYoXo',
-    '2N9LmW9ff8H3gP9y8SCkicW5TP2HiFpeK4z',
-    '2MxENjhLejvbBZNnQPcKn44XYQ3uoiBT3fF',
-    '2NFGG7yRBizUANU48b4dASrnNftqsNwzSM1',
-    '2MukokUKMzhzsTEhniYTfgubTYxNUi6PtTX',
-    '2Mygnzx3xh3r6ndwktC5z32gTjbRZXkJpFr',
-    '2Mt8d1fTJEyJxiVT9YVVXMhmTxxsexLdJiE',
-    '2N7YfFsFag5dkTAmHQ3EpaN4b4f3EPkwQkk',
-    '2N9CxubDCQThkSdYmKJ1i6UNHFwoKBxp2Hj',
-    '2NEMupTSk437zRY92iAiGNZCpDiwLvwnZEL',
-    '2NAWKepFhtFy1Kd5s5C8HJEcThWTyzKiNGA',
-    '2Mvy3yi71KxGHmk6dDbzAtxhbVPukK6MD5u',
-    '2MzKURtstNFKFimJ4UfW4wv8ymSuQCcZPN2',
-    '2NEdeQ6cqk1KerHsutnL1476XKDP2agcCh5',
-    '2NFpMahbHRJ2HRp5ezXycpEpy5w2BmnVM9W',
-    '2MuXzT5NSUwRzbAD1K6vvUDYqb3P9RUvPgK',
-    '2NDt2aMj1BLjg6gRwuKn85jm2AhyAV8e2VF',
-    '2N5PDFvrCCraXA3pv8CDqr5NxakT8KJb3Gg'
+    '2N6j5kx5h3RG8hhbUTzVw1py1RytnZNYoXo'
   ]
-
+*/
   var CASHADDR_MAINNET_P2PKH_ADDRESSES = [
     'bitcoincash:qph5kuz78czq00e3t85ugpgd7xmer5kr7c5f6jdpwk',
     'bitcoincash:qpxenfpcf975gxdjmq9pk3xm6hjmfj6re56t60smsm',
-    'bitcoincash:qzfau6vrq980qntgp5e7l6cpfsf7jw88c5u7y85qx6',
-    'bitcoincash:qzcguejjfxld867ck4zudc9a6y8mf6ftgqqrxzfmlh',
-    'bitcoincash:qqm2lpqdfjsg8kkhwk0a3e3gypyswkd69urny99j70',
-    'bitcoincash:qrccfa4qm3xfcrta78v7du75jjaww0ylnss5nxsy9s',
-    'bitcoincash:qqdcsl6c879esyxyacmz7g6vtzwjjwtznsv65x6znz',
-    'bitcoincash:qpr2ddwe8qnnh8h20mmn4zgrharmy0vuy5y4gr8gl2',
-    'bitcoincash:qqymsmh0nhfhs9k5whhnjwfxyaumvtxm8g2z0s4f9y',
-    'bitcoincash:qzwdmm83qjx7372wxgszaukan73ffn8ct54v6hs3dl',
-    'bitcoincash:qzh3f9me5z5sn2w8euap2gyrp6kr7gf6my5mhjey6s',
-    'bitcoincash:qrneuckcx69clprn4nnr82tf8sycqrs3ac4tr8m86f',
-    'bitcoincash:qz742xef07g9w8q52mx0q6m9hp05hnzm657wqd0ce2',
-    'bitcoincash:qq5dzl0drx8v0layyyuh5aupvxfs80ydmsp5444280',
-    'bitcoincash:qpxedxtug7kpwd6tgf5vx08gjamel7sldsc40mxew8',
-    'bitcoincash:qr4fs2m8tjmw54r2aqmadggzuagttkujgyrjs5d769',
-    'bitcoincash:qrmed4fxlhkgay9nxw7zn9muew5ktkyjnuuawvycze',
-    'bitcoincash:qqv3cpvmu4h0vqa6aly0urec7kwtuhe49yz6e7922v',
-    'bitcoincash:qr39scfteeu5l573lzerchh6wc4cqkxeturafzfkk9',
-    'bitcoincash:qzzjgw37vwls805c9fw6g9vqyupadst6wgmane0s4l'
+    'bitcoincash:qzfau6vrq980qntgp5e7l6cpfsf7jw88c5u7y85qx6'
   ]
 
   var CASHADDR_MAINNET_P2SH_ADDRESSES = [
     'bitcoincash:pph5kuz78czq00e3t85ugpgd7xmer5kr7crv8a2z4t',
     'bitcoincash:ppxenfpcf975gxdjmq9pk3xm6hjmfj6re5dw8qhctx',
-    'bitcoincash:pzfau6vrq980qntgp5e7l6cpfsf7jw88c5tmegnra8',
-    'bitcoincash:pzcguejjfxld867ck4zudc9a6y8mf6ftgqhxmdwcy2',
-    'bitcoincash:pqm2lpqdfjsg8kkhwk0a3e3gypyswkd69u5ke2z39j',
-    'bitcoincash:prccfa4qm3xfcrta78v7du75jjaww0ylns83wfh87d',
-    'bitcoincash:pqdcsl6c879esyxyacmz7g6vtzwjjwtznsmlffapgl',
-    'bitcoincash:ppr2ddwe8qnnh8h20mmn4zgrharmy0vuy5ns4vqtyh',
-    'bitcoincash:pqymsmh0nhfhs9k5whhnjwfxyaumvtxm8ga8jlj27e',
-    'bitcoincash:pzwdmm83qjx7372wxgszaukan73ffn8ct5zf8chjkz',
-    'bitcoincash:pzh3f9me5z5sn2w8euap2gyrp6kr7gf6myr72a78pd',
-    'bitcoincash:prneuckcx69clprn4nnr82tf8sycqrs3aczw7guyp5',
-    'bitcoincash:pz742xef07g9w8q52mx0q6m9hp05hnzm65ftazgmzh',
-    'bitcoincash:pq5dzl0drx8v0layyyuh5aupvxfs80ydmsk3g6jfuj',
-    'bitcoincash:ppxedxtug7kpwd6tgf5vx08gjamel7slds0sj5p646',
-    'bitcoincash:pr4fs2m8tjmw54r2aqmadggzuagttkujgy5hdm2apc',
-    'bitcoincash:prmed4fxlhkgay9nxw7zn9muew5ktkyjnutcnrrmey',
-    'bitcoincash:pqv3cpvmu4h0vqa6aly0urec7kwtuhe49y4ly3zf33',
-    'bitcoincash:pr39scfteeu5l573lzerchh6wc4cqkxetu5c5dw4dc',
-    'bitcoincash:pzzjgw37vwls805c9fw6g9vqyupadst6wgvcwkgnwz'
+    'bitcoincash:pzfau6vrq980qntgp5e7l6cpfsf7jw88c5tmegnra8'
   ]
 
   var CASHADDR_TESTNET_P2PKH_ADDRESSES = [
     'bchtest:qph5kuz78czq00e3t85ugpgd7xmer5kr7csm740kf2',
     'bchtest:qpxenfpcf975gxdjmq9pk3xm6hjmfj6re57e7gjvh8',
-    'bchtest:qzfau6vrq980qntgp5e7l6cpfsf7jw88c5cvqqkhpx',
-    'bchtest:qzcguejjfxld867ck4zudc9a6y8mf6ftgqy3z9tvct',
-    'bchtest:qqm2lpqdfjsg8kkhwk0a3e3gypyswkd69u8pqz89en',
-    'bchtest:qrccfa4qm3xfcrta78v7du75jjaww0ylns5xhpjnzv',
-    'bchtest:qqdcsl6c879esyxyacmz7g6vtzwjjwtznsggspc457',
-    'bchtest:qpr2ddwe8qnnh8h20mmn4zgrharmy0vuy5q8vy9lck',
-    'bchtest:qqymsmh0nhfhs9k5whhnjwfxyaumvtxm8gwsthh7zc',
-    'bchtest:qzwdmm83qjx7372wxgszaukan73ffn8ct5377sjx2r',
-    'bchtest:qzh3f9me5z5sn2w8euap2gyrp6kr7gf6mysfn4mnav',
-    'bchtest:qrneuckcx69clprn4nnr82tf8sycqrs3ac3e8qesa4',
-    'bchtest:qz742xef07g9w8q52mx0q6m9hp05hnzm656uy2d07k',
-    'bchtest:qq5dzl0drx8v0layyyuh5aupvxfs80ydms9x3jhaqn',
-    'bchtest:qpxedxtug7kpwd6tgf5vx08gjamel7sldsu8tuywfm',
-    'bchtest:qr4fs2m8tjmw54r2aqmadggzuagttkujgy8q5n0fae',
-    'bchtest:qrmed4fxlhkgay9nxw7zn9muew5ktkyjnuc02tx099',
-    'bchtest:qqv3cpvmu4h0vqa6aly0urec7kwtuhe49yxgae8ads',
-    'bchtest:qr39scfteeu5l573lzerchh6wc4cqkxetu80d9tp3e',
-    'bchtest:qzzjgw37vwls805c9fw6g9vqyupadst6wgl0h7d8jr'
+    'bchtest:qzfau6vrq980qntgp5e7l6cpfsf7jw88c5cvqqkhpx'
   ]
 
   var CASHADDR_TESTNET_P2SH_ADDRESSES = [
     'bchtest:pph5kuz78czq00e3t85ugpgd7xmer5kr7c87r6g4jh',
     'bchtest:ppxenfpcf975gxdjmq9pk3xm6hjmfj6re5fur840v6',
-    'bchtest:pzfau6vrq980qntgp5e7l6cpfsf7jw88c50fa0356m',
-    'bchtest:pzcguejjfxld867ck4zudc9a6y8mf6ftgqn5l2v0rk',
-    'bchtest:pqm2lpqdfjsg8kkhwk0a3e3gypyswkd69usyadqxzw',
-    'bchtest:prccfa4qm3xfcrta78v7du75jjaww0ylnsrr2w4se3',
-    'bchtest:pqdcsl6c879esyxyacmz7g6vtzwjjwtznslddwlk0r',
-    'bchtest:ppr2ddwe8qnnh8h20mmn4zgrharmy0vuy5hz3tzurt',
-    'bchtest:pqymsmh0nhfhs9k5whhnjwfxyaumvtxm8ge4kcsae9',
-    'bchtest:pzwdmm83qjx7372wxgszaukan73ffn8ct5xmrl4937',
-    'bchtest:pzh3f9me5z5sn2w8euap2gyrp6kr7gf6my8vw6usx3',
-    'bchtest:prneuckcx69clprn4nnr82tf8sycqrs3acxu607nxg',
-    'bchtest:pz742xef07g9w8q52mx0q6m9hp05hnzm65dee92v9t',
-    'bchtest:pq5dzl0drx8v0layyyuh5aupvxfs80ydmsjrvas7mw',
-    'bchtest:ppxedxtug7kpwd6tgf5vx08gjamel7sldstzknrdjx',
-    'bchtest:pr4fs2m8tjmw54r2aqmadggzuagttkujgys9fug2xy',
-    'bchtest:prmed4fxlhkgay9nxw7zn9muew5ktkyjnu02hypv7c',
-    'bchtest:pqv3cpvmu4h0vqa6aly0urec7kwtuhe49y3dqkq7kd',
-    'bchtest:pr39scfteeu5l573lzerchh6wc4cqkxetus2s2vz2y',
-    'bchtest:pzzjgw37vwls805c9fw6g9vqyupadst6wgg2232yf7'
+    'bchtest:pzfau6vrq980qntgp5e7l6cpfsf7jw88c50fa0356m'
   ]
 
   var SLPADDR_MAINNET_P2PKH_ADDRESSES = [
-    'simpleledger:qph5kuz78czq00e3t85ugpgd7xmer5kr7ccj3fcpsg',
-    'simpleledger:qpxenfpcf975gxdjmq9pk3xm6hjmfj6re5ks359mw9',
-    'simpleledger:qzfau6vrq980qntgp5e7l6cpfsf7jw88c5s90upqcy',
-    'simpleledger:qzcguejjfxld867ck4zudc9a6y8mf6ftgqvcdeumpf',
-    'simpleledger:qqm2lpqdfjsg8kkhwk0a3e3gypyswkd69u0g07sjq3',
-    'simpleledger:qrccfa4qm3xfcrta78v7du75jjaww0ylnsu0ca9ymw',
-    'simpleledger:qqdcsl6c879esyxyacmz7g6vtzwjjwtznsqpla0zdu',
-    'simpleledger:qpr2ddwe8qnnh8h20mmn4zgrharmy0vuy5gwrcjgp5',
-    'simpleledger:qqymsmh0nhfhs9k5whhnjwfxyaumvtxm8gxeytqfm6',
-    'simpleledger:qzwdmm83qjx7372wxgszaukan73ffn8ct5eh3v93np',
-    'simpleledger:qzh3f9me5z5sn2w8euap2gyrp6kr7gf6mycqufvyyw',
-    'simpleledger:qrneuckcx69clprn4nnr82tf8sycqrs3acesguw8yh',
-    'simpleledger:qz742xef07g9w8q52mx0q6m9hp05hnzm65j4tk6c85',
-    'simpleledger:qq5dzl0drx8v0layyyuh5aupvxfs80ydmsd07wq2e3',
-    'simpleledger:qpxedxtug7kpwd6tgf5vx08gjamel7slds5wyqnese',
-    'simpleledger:qr4fs2m8tjmw54r2aqmadggzuagttkujgy0fm0c7ym',
-    'simpleledger:qrmed4fxlhkgay9nxw7zn9muew5ktkyjnusx9h3cu8',
-    'simpleledger:qqv3cpvmu4h0vqa6aly0urec7kwtuhe49ywpj9s25j',
-    'simpleledger:qr39scfteeu5l573lzerchh6wc4cqkxetu0xzeukgm',
-    'simpleledger:qzzjgw37vwls805c9fw6g9vqyupadst6wghxcz6stp'
+    'tt:qph5kuz78czq00e3t85ugpgd7xmer5kr7csklfy0jp',
+    'tt:qpxenfpcf975gxdjmq9pk3xm6hjmfj6re575l5e4vv',
+    'tt:qzfau6vrq980qntgp5e7l6cpfsf7jw88c5cppuaw6d'
   ]
 
   var SLPADDR_MAINNET_P2SH_ADDRESSES = [
-    'simpleledger:pph5kuz78czq00e3t85ugpgd7xmer5kr7c0hvxlzt4',
-    'simpleledger:ppxenfpcf975gxdjmq9pk3xm6hjmfj6re5p4vmzc4c',
-    'simpleledger:pzfau6vrq980qntgp5e7l6cpfsf7jw88c58qjnxrre',
-    'simpleledger:pzcguejjfxld867ck4zudc9a6y8mf6ftgqmaskmc65',
-    'simpleledger:pqm2lpqdfjsg8kkhwk0a3e3gypyswkd69ucdj3h3mv',
-    'simpleledger:prccfa4qm3xfcrta78v7du75jjaww0ylnst29jz8qn',
-    'simpleledger:pqdcsl6c879esyxyacmz7g6vtzwjjwtznshyzjgpkp',
-    'simpleledger:ppr2ddwe8qnnh8h20mmn4zgrharmy0vuy5lt7h4t6f',
-    'simpleledger:pqymsmh0nhfhs9k5whhnjwfxyaumvtxm8g3uey82q8',
-    'simpleledger:pzwdmm83qjx7372wxgszaukan73ffn8ct5wjvrzjgu',
-    'simpleledger:pzh3f9me5z5sn2w8euap2gyrp6kr7gf6my09pxt8ln',
-    'simpleledger:prneuckcx69clprn4nnr82tf8sycqrs3acw44nfyl2',
-    'simpleledger:pz742xef07g9w8q52mx0q6m9hp05hnzm659skeamuf',
-    'simpleledger:pq5dzl0drx8v0layyyuh5aupvxfs80ydms62rp8fzv',
-    'simpleledger:ppxedxtug7kpwd6tgf5vx08gjamel7sldsrte056ty',
-    'simpleledger:pr4fs2m8tjmw54r2aqmadggzuagttkujgycvxqlalx',
-    'simpleledger:prmed4fxlhkgay9nxw7zn9muew5ktkyjnu8rcckm86',
-    'simpleledger:pqv3cpvmu4h0vqa6aly0urec7kwtuhe49yey02hf00',
-    'simpleledger:pr39scfteeu5l573lzerchh6wc4cqkxetucrlkm4nx',
-    'simpleledger:pzzjgw37vwls805c9fw6g9vqyupadst6wgqr9dansu'
+    'tt:pph5kuz78czq00e3t85ugpgd7xmer5kr7c8nzxrvfu',
+    'tt:ppxenfpcf975gxdjmq9pk3xm6hjmfj6re5f3zm7kh3',
+    'tt:pzfau6vrq980qntgp5e7l6cpfsf7jw88c50yun6dps'
   ]
 
   var SLPADDR_TESTNET_P2PKH_ADDRESSES = [
-    'slptest:qph5kuz78czq00e3t85ugpgd7xmer5kr7ct0ew4pmh',
-    'slptest:qpxenfpcf975gxdjmq9pk3xm6hjmfj6re59dengm96',
-    'slptest:qzfau6vrq980qntgp5e7l6cpfsf7jw88c5rc8mvqnm',
-    'slptest:qzcguejjfxld867ck4zudc9a6y8mf6ftgql9973m2k',
-    'slptest:qqm2lpqdfjsg8kkhwk0a3e3gypyswkd69uu48eajtw',
-    'slptest:qrccfa4qm3xfcrta78v7du75jjaww0ylns0js6gys3',
-    'slptest:qqdcsl6c879esyxyacmz7g6vtzwjjwtznsnuh6zzxr',
-    'slptest:qpr2ddwe8qnnh8h20mmn4zgrharmy0vuy5mntllg2t',
-    'slptest:qqymsmh0nhfhs9k5whhnjwfxyaumvtxm8g4yvvdfs9',
-    'slptest:qzwdmm83qjx7372wxgszaukan73ffn8ct522etg3c7',
-    'slptest:qzh3f9me5z5sn2w8euap2gyrp6kr7gf6myta5wpy03',
-    'slptest:qrneuckcx69clprn4nnr82tf8sycqrs3ac2dqmr80g',
-    'slptest:qz742xef07g9w8q52mx0q6m9hp05hnzm65pgr3hcvt',
-    'slptest:qq5dzl0drx8v0layyyuh5aupvxfs80ydms7jkfd2jw',
-    'slptest:qpxedxtug7kpwd6tgf5vx08gjamel7slds8nv87emx',
-    'slptest:qr4fs2m8tjmw54r2aqmadggzuagttkujgyu5ng470y',
-    'slptest:qrmed4fxlhkgay9nxw7zn9muew5ktkyjnurmdsuchc',
-    'slptest:qqv3cpvmu4h0vqa6aly0urec7kwtuhe49yau6za2ld',
-    'slptest:qr39scfteeu5l573lzerchh6wc4cqkxetuum273kry',
-    'slptest:qzzjgw37vwls805c9fw6g9vqyupadst6wgyms9hsq7'
+    'ttest:qph5kuz78czq00e3t85ugpgd7xmer5kr7cv0c3wsgz',
+    'ttest:qpxenfpcf975gxdjmq9pk3xm6hjmfj6re5zdcvn2k0',
+    'ttest:qzfau6vrq980qntgp5e7l6cpfsf7jw88c5ycxyh3qw'
   ]
 
   var SLPADDR_TESTNET_P2SH_ADDRESSES = [
-    'slptest:pph5kuz78czq00e3t85ugpgd7xmer5kr7cu2ypjzq2',
-    'slptest:ppxenfpcf975gxdjmq9pk3xm6hjmfj6re5jgyu0c78',
-    'slptest:pzfau6vrq980qntgp5e7l6cpfsf7jw88c55a65trgx',
-    'slptest:pzcguejjfxld867ck4zudc9a6y8mf6ftgqgqc3kc3t',
-    'slptest:pqm2lpqdfjsg8kkhwk0a3e3gypyswkd69uts6k63sn',
-    'slptest:prccfa4qm3xfcrta78v7du75jjaww0ylnschd408tv',
-    'slptest:pqdcsl6c879esyxyacmz7g6vtzwjjwtznsye249pa7',
-    'slptest:ppr2ddwe8qnnh8h20mmn4zgrharmy0vuy5vkksct3k',
-    'slptest:pqymsmh0nhfhs9k5whhnjwfxyaumvtxm8gzp3r22tc',
-    'slptest:pzwdmm83qjx7372wxgszaukan73ffn8ct5a0yy0jrr',
-    'slptest:pzh3f9me5z5sn2w8euap2gyrp6kr7gf6myucfpx85v',
-    'slptest:prneuckcx69clprn4nnr82tf8sycqrs3acaga5yy54',
-    'slptest:pz742xef07g9w8q52mx0q6m9hp05hnzm65kd77smhk',
-    'slptest:pq5dzl0drx8v0layyyuh5aupvxfs80ydmsfhtx2ffn',
-    'slptest:ppxedxtug7kpwd6tgf5vx08gjamel7sldssk3ge6qm',
-    'slptest:pr4fs2m8tjmw54r2aqmadggzuagttkujgyt3w8ja5e',
-    'slptest:prmed4fxlhkgay9nxw7zn9muew5ktkyjnu57slmmv9',
-    'slptest:pqv3cpvmu4h0vqa6aly0urec7kwtuhe49y2e8d6fys',
-    'slptest:pr39scfteeu5l573lzerchh6wc4cqkxetut7h3k4ce',
-    'slptest:pzzjgw37vwls805c9fw6g9vqyupadst6wgn7d2snmr'
+    'ttest:pph5kuz78czq00e3t85ugpgd7xmer5kr7cm297fnnl',
+    'ttest:ppxenfpcf975gxdjmq9pk3xm6hjmfj6re54g9r5fdj',
+    'ttest:pzfau6vrq980qntgp5e7l6cpfsf7jw88c5namtsjmn'
   ]
 
   var LEGACY_ADDRESSES = flatten([
@@ -385,6 +113,7 @@ describe('bchaddr', function () {
     LEGACY_TESTNET_P2SH_ADDRESSES
   ])
 
+  /*
   var BITPAY_MAINNET_ADDRESSES = flatten([
     BITPAY_MAINNET_P2PKH_ADDRESSES,
     BITPAY_MAINNET_P2SH_ADDRESSES
@@ -395,6 +124,7 @@ describe('bchaddr', function () {
     BITPAY_TESTNET_P2PKH_ADDRESSES,
     BITPAY_TESTNET_P2SH_ADDRESSES
   ])
+*/
 
   var CASHADDR_ADDRESSES = flatten([
     CASHADDR_MAINNET_P2PKH_ADDRESSES,
@@ -423,8 +153,8 @@ describe('bchaddr', function () {
   var MAINNET_ADDRESSES = flatten([
     LEGACY_MAINNET_P2PKH_ADDRESSES,
     LEGACY_MAINNET_P2SH_ADDRESSES,
-    BITPAY_MAINNET_P2PKH_ADDRESSES,
-    BITPAY_MAINNET_P2SH_ADDRESSES,
+    //  BITPAY_MAINNET_P2PKH_ADDRESSES,
+    //  BITPAY_MAINNET_P2SH_ADDRESSES,
     CASHADDR_MAINNET_P2PKH_ADDRESSES,
     CASHADDR_MAINNET_P2SH_ADDRESSES
   ])
@@ -432,8 +162,8 @@ describe('bchaddr', function () {
   var TESTNET_ADDRESSES = flatten([
     LEGACY_TESTNET_P2PKH_ADDRESSES,
     LEGACY_TESTNET_P2SH_ADDRESSES,
-    BITPAY_TESTNET_P2PKH_ADDRESSES,
-    BITPAY_TESTNET_P2SH_ADDRESSES,
+    //  BITPAY_TESTNET_P2PKH_ADDRESSES,
+    //  BITPAY_TESTNET_P2SH_ADDRESSES,
     CASHADDR_TESTNET_P2PKH_ADDRESSES,
     CASHADDR_TESTNET_P2SH_ADDRESSES
   ])
@@ -441,8 +171,8 @@ describe('bchaddr', function () {
   var P2PKH_ADDRESSES = flatten([
     LEGACY_MAINNET_P2PKH_ADDRESSES,
     LEGACY_TESTNET_P2PKH_ADDRESSES,
-    BITPAY_MAINNET_P2PKH_ADDRESSES,
-    BITPAY_TESTNET_P2PKH_ADDRESSES,
+    //  BITPAY_MAINNET_P2PKH_ADDRESSES,
+    //  BITPAY_TESTNET_P2PKH_ADDRESSES,
     CASHADDR_MAINNET_P2PKH_ADDRESSES,
     CASHADDR_TESTNET_P2PKH_ADDRESSES
   ])
@@ -450,8 +180,8 @@ describe('bchaddr', function () {
   var P2SH_ADDRESSES = flatten([
     LEGACY_MAINNET_P2SH_ADDRESSES,
     LEGACY_TESTNET_P2SH_ADDRESSES,
-    BITPAY_MAINNET_P2SH_ADDRESSES,
-    BITPAY_TESTNET_P2SH_ADDRESSES,
+    //  BITPAY_MAINNET_P2SH_ADDRESSES,
+    //  BITPAY_TESTNET_P2SH_ADDRESSES,
     CASHADDR_MAINNET_P2SH_ADDRESSES,
     CASHADDR_TESTNET_P2SH_ADDRESSES
   ])
@@ -475,11 +205,6 @@ describe('bchaddr', function () {
     it('it should detect a legacy address\' format correctly', function () {
       LEGACY_ADDRESSES.forEach(function (address) {
         assert.strictEqual(bchaddr.detectAddressFormat(address), bchaddr.Format.Legacy)
-      })
-    })
-    it('it should detect a bitpay address\' format correctly', function () {
-      BITPAY_MAINNET_ADDRESSES.forEach(function (address) {
-        assert.strictEqual(bchaddr.detectAddressFormat(address), bchaddr.Format.Bitpay)
       })
     })
     it('it should detect a cashaddr address\' format correctly', function () {
@@ -555,12 +280,12 @@ describe('bchaddr', function () {
         LEGACY_ADDRESSES
       )
     })
-    it('should translate bitpay address format to legacy format correctly', function () {
+    /* it('should translate bitpay address format to legacy format correctly', function () {
       assert.deepEqual(
         BITPAY_ADDRESSES.map(bchaddr.toLegacyAddress),
         LEGACY_ADDRESSES
       )
-    })
+    }) */
     it('should translate cashaddr address format to legacy format correctly', function () {
       assert.deepEqual(
         CASHADDR_ADDRESSES.map(bchaddr.toLegacyAddress),
@@ -581,7 +306,8 @@ describe('bchaddr', function () {
         bchaddr.toBitpayAddress('some t1LuPdPkGH5QoNSewQrr8EzNbM27ktPdgQX')
       }, bchaddr.InvalidAddressError)
     })
-    it('should translate legacy address format to bitpay format correctly', function () {
+
+    /* it('should translate legacy address format to bitpay format correctly', function () {
       assert.deepEqual(
         LEGACY_ADDRESSES.map(bchaddr.toBitpayAddress),
         BITPAY_ADDRESSES
@@ -598,10 +324,10 @@ describe('bchaddr', function () {
         CASHADDR_ADDRESSES.map(bchaddr.toBitpayAddress),
         BITPAY_ADDRESSES
       )
-    })
+    })  */
   })
 
-  describe('#toCashAddress()', function () {
+  /*  describe('#toCashAddress()', function () {
     it('should fail when called with an invalid address', function () {
       assert.throws(function () {
         bchaddr.toCashAddress()
@@ -637,7 +363,7 @@ describe('bchaddr', function () {
         CASHADDR_ADDRESSES
       )
     })
-  })
+  }) */
 
   describe('#toSlpAddress()', function () {
     it('should fail when called with an invalid address', function () {
@@ -657,12 +383,12 @@ describe('bchaddr', function () {
         SLPADDR_ADDRESSES
       )
     })
-    it('should translate bitpay address format to slpaddr format correctly', function () {
+    /* it('should translate bitpay address format to slpaddr format correctly', function () {
       assert.deepEqual(
         BITPAY_ADDRESSES.map(bchaddr.toSlpAddress),
         SLPADDR_ADDRESSES
       )
-    })
+    }) */
     it('should translate cashaddr address format to itself correctly', function () {
       assert.deepEqual(
         SLPADDR_ADDRESSES.map(bchaddr.toSlpAddress),
@@ -694,11 +420,11 @@ describe('bchaddr', function () {
         assert.isTrue(bchaddr.isLegacyAddress(address))
       })
     })
-    it('should return false for a bitpay address', function () {
+    /* it('should return false for a bitpay address', function () {
       BITPAY_MAINNET_ADDRESSES.forEach(function (address) {
         assert.isFalse(bchaddr.isLegacyAddress(address))
       })
-    })
+    }) */
     it('should return false for a cashaddr address', function () {
       CASHADDR_ADDRESSES.forEach(function (address) {
         assert.isFalse(bchaddr.isLegacyAddress(address))
@@ -728,11 +454,11 @@ describe('bchaddr', function () {
         assert.isFalse(bchaddr.isBitpayAddress(address))
       })
     })
-    it('should return true for a bitpay address', function () {
+    /* it('should return true for a bitpay address', function () {
       BITPAY_MAINNET_ADDRESSES.forEach(function (address) {
         assert.isTrue(bchaddr.isBitpayAddress(address))
       })
-    })
+    }) */
     it('should return false for a cashaddr address', function () {
       CASHADDR_ADDRESSES.forEach(function (address) {
         assert.isFalse(bchaddr.isBitpayAddress(address))
@@ -762,11 +488,11 @@ describe('bchaddr', function () {
         assert.isFalse(bchaddr.isCashAddress(address))
       })
     })
-    it('should return false for a bitpay address', function () {
+    /* it('should return false for a bitpay address', function () {
       BITPAY_ADDRESSES.forEach(function (address) {
         assert.isFalse(bchaddr.isCashAddress(address))
       })
-    })
+    }) */
     it('should return false for a slpaddr address', function () {
       SLPADDR_ADDRESSES.forEach(function (address) {
         assert.isFalse(bchaddr.isCashAddress(address))
@@ -796,11 +522,11 @@ describe('bchaddr', function () {
         assert.isFalse(bchaddr.isSlpAddress(address))
       })
     })
-    it('should return false for a bitpay address', function () {
+    /* it('should return false for a bitpay address', function () {
       BITPAY_ADDRESSES.forEach(function (address) {
         assert.isFalse(bchaddr.isSlpAddress(address))
       })
-    })
+    }) */
     it('should return false for a cashaddr address', function () {
       CASHADDR_ADDRESSES.forEach(function (address) {
         assert.isFalse(bchaddr.isSlpAddress(address))

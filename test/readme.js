@@ -15,7 +15,7 @@ describe('Readme examples', function () {
     var Network = bchaddr.Network
     var Type = bchaddr.Type
     var isLegacyAddress = bchaddr.isLegacyAddress
-    var isBitpayAddress = bchaddr.isBitpayAddress
+    // var isBitpayAddress = bchaddr.isBitpayAddress
     var isCashAddress = bchaddr.isCashAddress
     var isMainnetAddress = bchaddr.isMainnetAddress
     var isTestnetAddress = bchaddr.isTestnetAddress
@@ -24,11 +24,11 @@ describe('Readme examples', function () {
     var detectAddressFormat = bchaddr.detectAddressFormat
     var detectAddressNetwork = bchaddr.detectAddressNetwork
     var detectAddressType = bchaddr.detectAddressType
-    var toLegacyAddress = bchaddr.toLegacyAddress
-    var toBitpayAddress = bchaddr.toBitpayAddress
-    var toCashAddress = bchaddr.toCashAddress
+    // var toLegacyAddress = bchaddr.toLegacyAddress
+    // var toBitpayAddress = bchaddr.toBitpayAddress
+    // var toCashAddress = bchaddr.toCashAddress
     assert.strictEqual(
-      isLegacyAddress('1B9UNtBfkkpgt8kVbwLN9ktE62QKnMbDzR'),
+      isLegacyAddress('s1XMDbagKV6t7iMiv1xBbTWnri3VaEQuqwu'),
       true
     )
     assert.strictEqual(
@@ -36,51 +36,35 @@ describe('Readme examples', function () {
       false
     )
     assert.strictEqual(
-      isBitpayAddress('CScMwvXjdooDnGevHgfHjGWFi9cjk75Aaj'),
+      isMainnetAddress('s1XMDbagKV6t7iMiv1xBbTWnri3VaEQuqwu'),
       true
-    )
-    assert.strictEqual(
-      isBitpayAddress('1B9UNtBfkkpgt8kVbwLN9ktE62QKnMbDzR'),
-      false
     )
     assert.strictEqual(
       isCashAddress('qph5kuz78czq00e3t85ugpgd7xmer5kr7c5f6jdpwk'),
       true
     )
     assert.strictEqual(
-      isCashAddress('CScMwvXjdooDnGevHgfHjGWFi9cjk75Aaj'),
-      false
-    )
-    assert.strictEqual(
-      isMainnetAddress('1P238gziZdeS5Wj9nqLhQHSBK2Lz6zPSke'),
+      isTestnetAddress('tmKrpi46D7k7nd1zqD6TE9EetwfgE2sHgcs'),
       true
     )
     assert.strictEqual(
-      isMainnetAddress('mnbGP2FeRsbgdQCzDT35zPWDcYSKm4wrcg'),
+      isTestnetAddress('s1XMDbagKV6t7iMiv1xBbTWnri3VaEQuqwu'),
       false
     )
     assert.strictEqual(
-      isTestnetAddress('qqdcsl6c879esyxyacmz7g6vtzwjjwtznsggspc457'),
+      isP2PKHAddress('s1UH4JffKMCDrgWhnutuwUECXNZvsJ8A4dn'),
       true
     )
     assert.strictEqual(
-      isTestnetAddress('CeUvhjLnSgcxyedaUafcyo4Cw9ZPwGq9JJ'),
+      isP2PKHAddress('s3Y3EX8Am31CVoXRM93rBt99nrZnHjCmRkf'),
       false
     )
     assert.strictEqual(
-      isP2PKHAddress('1Mdob5JY1yuwoj6y76Vf3AQpoqUH5Aft8z'),
+      isP2SHAddress('s3Uy5ED9ku6YEmgQE2zaXtrZTX6DatCdTcn'),
       true
     )
     assert.strictEqual(
-      isP2PKHAddress('2NFGG7yRBizUANU48b4dASrnNftqsNwzSM1'),
-      false
-    )
-    assert.strictEqual(
-      isP2SHAddress('H92i9XpREZiBscxGu6Vx3M8jNGBKqscBBB'),
-      true
-    )
-    assert.strictEqual(
-      isP2SHAddress('CeUvhjLnSgcxyedaUafcyo4Cw9ZPwGq9JJ'),
+      isP2SHAddress('s1UH4JffKMCDrgWhnutuwUECXNZvsJ8A4dn'),
       false
     )
     assert.strictEqual(
@@ -88,11 +72,7 @@ describe('Readme examples', function () {
       Format.Cashaddr
     )
     assert.strictEqual(
-      detectAddressFormat('CScMwvXjdooDnGevHgfHjGWFi9cjk75Aaj'),
-      Format.Bitpay
-    )
-    assert.strictEqual(
-      detectAddressNetwork('1P238gziZdeS5Wj9nqLhQHSBK2Lz6zPSke'),
+      detectAddressNetwork('s1XMDbagKV6t7iMiv1xBbTWnri3VaEQuqwu'),
       Network.Mainnet
     )
     assert.strictEqual(
@@ -100,24 +80,12 @@ describe('Readme examples', function () {
       Network.Testnet
     )
     assert.strictEqual(
-      detectAddressType('1P238gziZdeS5Wj9nqLhQHSBK2Lz6zPSke'),
+      detectAddressType('s1XMDbagKV6t7iMiv1xBbTWnri3VaEQuqwu'),
       Type.P2PKH
     )
     assert.strictEqual(
-      detectAddressType('3NKpWcnyZtEKttoQECAFTnmkxMkzgbT4WX'),
+      detectAddressType('s3Uy5ED9ku6YEmgQE2zaXtrZTX6DatCdTcn'),
       Type.P2SH
-    )
-    assert.strictEqual(
-      toLegacyAddress('qph5kuz78czq00e3t85ugpgd7xmer5kr7c5f6jdpwk'),
-      '1B9UNtBfkkpgt8kVbwLN9ktE62QKnMbDzR'
-    )
-    assert.strictEqual(
-      toBitpayAddress('1B9UNtBfkkpgt8kVbwLN9ktE62QKnMbDzR'),
-      'CScMwvXjdooDnGevHgfHjGWFi9cjk75Aaj'
-    )
-    assert.strictEqual(
-      toCashAddress('1B9UNtBfkkpgt8kVbwLN9ktE62QKnMbDzR'),
-      'bitcoincash:qph5kuz78czq00e3t85ugpgd7xmer5kr7c5f6jdpwk'
     )
   })
 })
