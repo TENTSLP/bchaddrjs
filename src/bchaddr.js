@@ -325,7 +325,7 @@ function decodeCashAddress (address) {
     } catch (error) {
     }
   } else {
-    var prefixes = ['bitcoincash', 'bchtest', 'regtest', 'bchreg']
+    var prefixes = ['tt', 'ttest', 'treg']
     for (var i = 0; i < prefixes.length; ++i) {
       try {
         var prefix = prefixes[i]
@@ -350,16 +350,15 @@ function decodeCashAddressWithPrefix (address) {
     var hash = Array.prototype.slice.call(decoded.hash, 0)
     var type = decoded.type === 'P2PKH' ? Type.P2PKH : Type.P2SH
     switch (decoded.prefix) {
-      case 'bitcoincash':
+      case 'tt':
         return {
           hash: hash,
           format: Format.Cashaddr,
           network: Network.Mainnet,
           type: type
         }
-      case 'bchtest':
-      case 'regtest':
-      case 'bchreg':
+      case 'ttest':
+      case 'treg':
         return {
           hash: hash,
           format: Format.Cashaddr,
@@ -467,7 +466,7 @@ function encodeAsBitpay (decoded) {
  * @returns {string}
  */
 function encodeAsCashaddr (decoded) {
-  var prefix = decoded.network === Network.Mainnet ? 'bitcoincash' : 'bchtest'
+  var prefix = decoded.network === Network.Mainnet ? 'tt' : 'ttest'
   var type = decoded.type === Type.P2PKH ? 'P2PKH' : 'P2SH'
   var hash = Uint8Array.from(decoded.hash)
   return cashaddr.encode(prefix, type, hash)
@@ -493,7 +492,7 @@ function encodeAsSlpaddr (decoded) {
  * @returns {string}
  */
 function encodeAsMainnetaddr (decoded) {
-  var prefix = 'bitcoincash'
+  var prefix = 'tt'
   var type = decoded.type === Type.P2PKH ? 'P2PKH' : 'P2SH'
   var hash = Uint8Array.from(decoded.hash)
   if (decoded.format === Format.Slpaddr) {
@@ -509,7 +508,7 @@ function encodeAsMainnetaddr (decoded) {
  * @returns {string}
  */
 function encodeAsTestnetaddr (decoded) {
-  var prefix = 'bchtest'
+  var prefix = 'ttest'
   var type = decoded.type === Type.P2PKH ? 'P2PKH' : 'P2SH'
   var hash = Uint8Array.from(decoded.hash)
   if (decoded.format === Format.Slpaddr) {
@@ -525,7 +524,7 @@ function encodeAsTestnetaddr (decoded) {
  * @returns {string}
  */
 function encodeAsRegtestaddr (decoded) {
-  var prefix = 'bchreg'
+  var prefix = 'treg'
   var type = decoded.type === Type.P2PKH ? 'P2PKH' : 'P2SH'
   var hash = Uint8Array.from(decoded.hash)
   if (decoded.format === Format.Slpaddr) {
