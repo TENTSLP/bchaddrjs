@@ -586,8 +586,12 @@ function isCashAddress (address) {
  * @returns {boolean}
  * @throws {InvalidAddressError}
  */
-function isSlpAddress (address) {
-  return detectAddressFormat(address) === Format.Slpaddr
+function isSlpAddress(address) {
+  try {
+    return decodeSlpAddress(address).format === Format.Slpaddr
+  } catch (error) {
+  }
+  return false
 }
 
 /**
