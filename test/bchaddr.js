@@ -59,51 +59,51 @@ describe('bchaddr', function () {
   ]
 */
   var CASHADDR_MAINNET_P2PKH_ADDRESSES = [
-    'bitcoincash:qph5kuz78czq00e3t85ugpgd7xmer5kr7c5f6jdpwk',
-    'bitcoincash:qpxenfpcf975gxdjmq9pk3xm6hjmfj6re56t60smsm',
-    'bitcoincash:qzfau6vrq980qntgp5e7l6cpfsf7jw88c5u7y85qx6'
+    'tt:qph5kuz78czq00e3t85ugpgd7xmer5kr7c64xkcu2l',
+    'tt:qpxenfpcf975gxdjmq9pk3xm6hjmfj6re55hxt9x5j',
+    'tt:qzfau6vrq980qntgp5e7l6cpfsf7jw88c5jzcrpazn'
   ]
 
   var CASHADDR_MAINNET_P2SH_ADDRESSES = [
-    'bitcoincash:pph5kuz78czq00e3t85ugpgd7xmer5kr7crv8a2z4t',
-    'bitcoincash:ppxenfpcf975gxdjmq9pk3xm6hjmfj6re5dw8qhctx',
-    'bitcoincash:pzfau6vrq980qntgp5e7l6cpfsf7jw88c5tmegnra8'
+    'tt:pph5kuz78czq00e3t85ugpgd7xmer5kr7cdsmell3z',
+    'tt:ppxenfpcf975gxdjmq9pk3xm6hjmfj6re5rjmyz900',
+    'tt:pzfau6vrq980qntgp5e7l6cpfsf7jw88c5989vx7ew'
   ]
 
   var CASHADDR_TESTNET_P2PKH_ADDRESSES = [
-    'bchtest:qph5kuz78czq00e3t85ugpgd7xmer5kr7csm740kf2',
-    'bchtest:qpxenfpcf975gxdjmq9pk3xm6hjmfj6re57e7gjvh8',
-    'bchtest:qzfau6vrq980qntgp5e7l6cpfsf7jw88c5cvqqkhpx'
+    'ttest:qph5kuz78czq00e3t85ugpgd7xmer5kr7ck335ez9l',
+    'ttest:qpxenfpcf975gxdjmq9pk3xm6hjmfj6re5cn3fycmj',
+    'ttest:qzfau6vrq980qntgp5e7l6cpfsf7jw88c57x0pqrdn'
   ]
 
   var CASHADDR_TESTNET_P2SH_ADDRESSES = [
-    'bchtest:pph5kuz78czq00e3t85ugpgd7xmer5kr7c87r6g4jh',
-    'bchtest:ppxenfpcf975gxdjmq9pk3xm6hjmfj6re5fur840v6',
-    'bchtest:pzfau6vrq980qntgp5e7l6cpfsf7jw88c50fa0356m'
+    'ttest:pph5kuz78czq00e3t85ugpgd7xmer5kr7cp5vm7p7z',
+    'ttest:ppxenfpcf975gxdjmq9pk3xm6hjmfj6re50kvxrmq0',
+    'ttest:pzfau6vrq980qntgp5e7l6cpfsf7jw88c5frjw8qkw'
   ]
 
   var SLPADDR_MAINNET_P2PKH_ADDRESSES = [
-    'tt:qph5kuz78czq00e3t85ugpgd7xmer5kr7csklfy0jp',
-    'tt:qpxenfpcf975gxdjmq9pk3xm6hjmfj6re575l5e4vv',
-    'tt:qzfau6vrq980qntgp5e7l6cpfsf7jw88c5cppuaw6d'
+    'tt:qph5kuz78czq00e3t85ugpgd7xmer5kr7c64xkcu2l',
+    'tt:qpxenfpcf975gxdjmq9pk3xm6hjmfj6re55hxt9x5j',
+    'tt:qzfau6vrq980qntgp5e7l6cpfsf7jw88c5jzcrpazn'
   ]
 
   var SLPADDR_MAINNET_P2SH_ADDRESSES = [
-    'tt:pph5kuz78czq00e3t85ugpgd7xmer5kr7c8nzxrvfu',
-    'tt:ppxenfpcf975gxdjmq9pk3xm6hjmfj6re5f3zm7kh3',
-    'tt:pzfau6vrq980qntgp5e7l6cpfsf7jw88c50yun6dps'
+    'tt:pph5kuz78czq00e3t85ugpgd7xmer5kr7cdsmell3z',
+    'tt:ppxenfpcf975gxdjmq9pk3xm6hjmfj6re5rjmyz900',
+    'tt:pzfau6vrq980qntgp5e7l6cpfsf7jw88c5989vx7ew'
   ]
 
   var SLPADDR_TESTNET_P2PKH_ADDRESSES = [
-    'ttest:qph5kuz78czq00e3t85ugpgd7xmer5kr7cv0c3wsgz',
-    'ttest:qpxenfpcf975gxdjmq9pk3xm6hjmfj6re5zdcvn2k0',
-    'ttest:qzfau6vrq980qntgp5e7l6cpfsf7jw88c5ycxyh3qw'
+    'ttest:qph5kuz78czq00e3t85ugpgd7xmer5kr7ck335ez9l',
+    'ttest:qpxenfpcf975gxdjmq9pk3xm6hjmfj6re5cn3fycmj',
+    'ttest:qzfau6vrq980qntgp5e7l6cpfsf7jw88c57x0pqrdn'
   ]
 
   var SLPADDR_TESTNET_P2SH_ADDRESSES = [
-    'ttest:pph5kuz78czq00e3t85ugpgd7xmer5kr7cm297fnnl',
-    'ttest:ppxenfpcf975gxdjmq9pk3xm6hjmfj6re54g9r5fdj',
-    'ttest:pzfau6vrq980qntgp5e7l6cpfsf7jw88c5namtsjmn'
+    'ttest:pph5kuz78czq00e3t85ugpgd7xmer5kr7cp5vm7p7z',
+    'ttest:ppxenfpcf975gxdjmq9pk3xm6hjmfj6re50kvxrmq0',
+    'ttest:pzfau6vrq980qntgp5e7l6cpfsf7jw88c5frjw8qkw'
   ]
 
   var LEGACY_ADDRESSES = flatten([
@@ -493,9 +493,9 @@ describe('bchaddr', function () {
         assert.isFalse(bchaddr.isCashAddress(address))
       })
     }) */
-    it('should return false for a slpaddr address', function () {
+    it('should return true for a slpaddr address', function () {
       SLPADDR_ADDRESSES.forEach(function (address) {
-        assert.isFalse(bchaddr.isCashAddress(address))
+        assert.isTrue(bchaddr.isCashAddress(address))
       })
     })
     it('should return true for a cashaddr address', function () {
@@ -511,7 +511,7 @@ describe('bchaddr', function () {
         bchaddr.isSlpAddress()
       }, bchaddr.InvalidAddressError)
       assert.throws(function () {
-        bchaddr.isSlpAddress('some invalid address')
+        bchaddr.isSlpAddress('ttest:qph5kuz78czq00e3t85ugpgd7xmer5kr7ck335ez9ls')
       }, bchaddr.InvalidAddressError)
       assert.throws(function () {
         bchaddr.isSlpAddress('some int1LuPdPkGH5QoNSewQrr8EzNbM27ktPdgQX')
@@ -527,9 +527,9 @@ describe('bchaddr', function () {
         assert.isFalse(bchaddr.isSlpAddress(address))
       })
     }) */
-    it('should return false for a cashaddr address', function () {
+    it('should return true for a cashaddr address', function () {
       CASHADDR_ADDRESSES.forEach(function (address) {
-        assert.isFalse(bchaddr.isSlpAddress(address))
+        assert.isTrue(bchaddr.isSlpAddress(address))
       })
     })
     it('should return true for a slpaddr address', function () {
