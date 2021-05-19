@@ -12702,7 +12702,8 @@ function config (name) {
 (function (Buffer){(function (){
 /***
  * @license
- * https://github.com/bitcoincashjs/bchaddr
+ * https://github.com/TENTSLP/bchaddr
+ * Copyright (c) 2021 ciripel
  * Copyright (c) 2018 Emilio Almansi
  * Distributed under the MIT software license, see the accompanying
  * file LICENSE or http://www.opensource.org/licenses/mit-license.php.
@@ -12712,8 +12713,8 @@ var bs58check = require('bs58check')
 var cashaddr = require('cashaddrjs-slp')
 
 /**
- * General purpose Bitcoin Cash address detection and translation.<br />
- * Supports all major Bitcoin Cash address formats.<br />
+ * General purpose TENT address detection and translation.<br />
+ * Supports all major TENT address formats.<br />
  * Currently:
  * <ul>
  *    <li> Legacy format </li>
@@ -12725,7 +12726,7 @@ var cashaddr = require('cashaddrjs-slp')
 
 /**
  * @static
- * Supported Bitcoin Cash address formats.
+ * Supported TENT address formats.
  */
 var Format = {}
 Format.Legacy = 'legacy'
@@ -12750,7 +12751,7 @@ Type.P2PKH = 'p2pkh'
 Type.P2SH = 'p2sh'
 
 /**
- * Returns a boolean indicating whether the given input is a valid Bitcoin Cash address.
+ * Returns a boolean indicating whether the given input is a valid TENT address.
  * @static
  * @param {*} input - Any input to check for validity.
  * @returns {boolean}
@@ -12767,7 +12768,7 @@ function isValidAddress (input) {
 /**
  * Detects what is the given address' format.
  * @static
- * @param {string} address - A valid Bitcoin Cash address in any format.
+ * @param {string} address - A valid TENT address in any format.
  * @return {string}
  * @throws {InvalidAddressError}
  */
@@ -12778,7 +12779,7 @@ function detectAddressFormat (address) {
 /**
  * Detects what is the given address' network.
  * @static
- * @param {string} address - A valid Bitcoin Cash address in any format.
+ * @param {string} address - A valid TENT address in any format.
  * @return {string}
  * @throws {InvalidAddressError}
  */
@@ -12789,7 +12790,7 @@ function detectAddressNetwork (address) {
 /**
  * Detects what is the given address' type.
  * @static
- * @param {string} address - A valid Bitcoin Cash address in any format.
+ * @param {string} address - A valid TENT address in any format.
  * @return {string}
  * @throws {InvalidAddressError}
  */
@@ -12800,7 +12801,7 @@ function detectAddressType (address) {
 /**
  * Translates the given address into legacy format.
  * @static
- * @param {string} address - A valid Bitcoin Cash address in any format.
+ * @param {string} address - A valid TENT address in any format.
  * @return {string}
  * @throws {InvalidAddressError}
  */
@@ -12815,7 +12816,7 @@ function toLegacyAddress (address) {
 /**
  * Translates the given address into bitpay format.
  * @static
- * @param {string} address - A valid Bitcoin Cash address in any format.
+ * @param {string} address - A valid TENT address in any format.
  * @return {string}
  * @throws {InvalidAddressError}
  */
@@ -12830,7 +12831,7 @@ function toBitpayAddress (address) {
 /**
  * Translates the given address into cashaddr format.
  * @static
- * @param {string} address - A valid Bitcoin Cash address in any format.
+ * @param {string} address - A valid TENT address in any format.
  * @return {string}
  * @throws {InvalidAddressError}
  */
@@ -12922,7 +12923,7 @@ VERSION_BYTE[Format.Bitpay][Network.Testnet][Type.P2SH] = 196
 /**
  * Decodes the given address into its constituting hash, format, network and type.
  * @private
- * @param {string} address - A valid Bitcoin Cash address in any format.
+ * @param {string} address - A valid TENT address in any format.
  * @return {object}
  * @throws {InvalidAddressError}
  */
@@ -12952,7 +12953,7 @@ var BASE_58_CHECK_PAYLOAD_LENGTH = 22
 /**
  * Attempts to decode the given address assuming it is a base58 address.
  * @private
- * @param {string} address - A valid Bitcoin Cash address in any format.
+ * @param {string} address - A valid TENT address in any format.
  * @return {object}
  * @throws {InvalidAddressError}
  */
@@ -13016,7 +13017,7 @@ function decodeBase58Address (address) {
 /**
  * Attempts to decode the given address assuming it is a cashaddr address.
  * @private
- * @param {string} address - A valid Bitcoin Cash address in any format.
+ * @param {string} address - A valid TENT address in any format.
  * @return {object}
  * @throws {InvalidAddressError}
  */
@@ -13042,7 +13043,7 @@ function decodeCashAddress (address) {
 /**
  * Attempts to decode the given address assuming it is a cashaddr address with explicit prefix.
  * @private
- * @param {string} address - A valid Bitcoin Cash address in any format.
+ * @param {string} address - A valid TENT address in any format.
  * @return {object}
  * @throws {InvalidAddressError}
  */
@@ -13251,7 +13252,7 @@ function encodeAsSlpRegtestaddr (decoded) {
 /**
  * Returns a boolean indicating whether the address is in legacy format.
  * @static
- * @param {string} address - A valid Bitcoin Cash address in any format.
+ * @param {string} address - A valid TENT address in any format.
  * @returns {boolean}
  * @throws {InvalidAddressError}
  */
@@ -13262,7 +13263,7 @@ function isLegacyAddress (address) {
 /**
  * Returns a boolean indicating whether the address is in bitpay format.
  * @static
- * @param {string} address - A valid Bitcoin Cash address in any format.
+ * @param {string} address - A valid TENT address in any format.
  * @returns {boolean}
  * @throws {InvalidAddressError}
  */
@@ -13273,7 +13274,7 @@ function isBitpayAddress (address) {
 /**
  * Returns a boolean indicating whether the address is in cashaddr format.
  * @static
- * @param {string} address - A valid Bitcoin Cash address in any format.
+ * @param {string} address - A valid TENT address in any format.
  * @returns {boolean}
  * @throws {InvalidAddressError}
  */
@@ -13284,11 +13285,11 @@ function isCashAddress (address) {
 /**
  * Returns a boolean indicating whether the address is in cashaddr format.
  * @static
- * @param {string} address - A valid Bitcoin Cash address in any format.
+ * @param {string} address - A valid TENT address in any format.
  * @returns {boolean}
  * @throws {InvalidAddressError}
  */
-function isSlpAddress(address) {
+function isSlpAddress (address) {
   try {
     return decodeSlpAddress(address).format === Format.Slpaddr
   } catch (error) {
@@ -13299,7 +13300,7 @@ function isSlpAddress(address) {
 /**
  * Returns a boolean indicating whether the address is a mainnet address.
  * @static
- * @param {string} address - A valid Bitcoin Cash address in any format.
+ * @param {string} address - A valid TENT address in any format.
  * @returns {boolean}
  * @throws {InvalidAddressError}
  */
@@ -13310,7 +13311,7 @@ function isMainnetAddress (address) {
 /**
  * Returns a boolean indicating whether the address is a testnet address.
  * @static
- * @param {string} address - A valid Bitcoin Cash address in any format.
+ * @param {string} address - A valid TENT address in any format.
  * @returns {boolean}
  * @throws {InvalidAddressError}
  */
@@ -13321,7 +13322,7 @@ function isTestnetAddress (address) {
 /**
  * Returns a boolean indicating whether the address is a p2pkh address.
  * @static
- * @param {string} address - A valid Bitcoin Cash address in any format.
+ * @param {string} address - A valid TENT address in any format.
  * @returns {boolean}
  * @throws {InvalidAddressError}
  */
@@ -13332,7 +13333,7 @@ function isP2PKHAddress (address) {
 /**
  * Returns a boolean indicating whether the address is a p2sh address.
  * @static
- * @param {string} address - A valid Bitcoin Cash address in any format.
+ * @param {string} address - A valid TENT address in any format.
  * @returns {boolean}
  * @throws {InvalidAddressError}
  */
@@ -13341,14 +13342,14 @@ function isP2SHAddress (address) {
 }
 
 /**
- * Error thrown when the address given as input is not a valid Bitcoin Cash address.
+ * Error thrown when the address given as input is not a valid TENT address.
  * @constructor
  * InvalidAddressError
  */
 function InvalidAddressError () {
   var error = new Error()
   this.name = error.name = 'InvalidAddressError'
-  this.message = error.message = 'Received an invalid Bitcoin Cash address as input.'
+  this.message = error.message = 'Received an invalid TENT address as input.'
   this.stack = error.stack
 }
 

@@ -1,4 +1,4 @@
-# BchAddr.js: Bitcoin Cash general purpose address translation for Node.js and web browsers.
+# BchAddr.js: TENT general purpose address translation for Node.js and web browsers.
 
 [![Build Status](https://travis-ci.org/bitcoincashjs/bchaddrjs.svg?branch=master)](https://travis-ci.org/bitcoincashjs/bchaddrjs) [![Coverage Status](https://coveralls.io/repos/github/bitcoincashjs/bchaddrjs/badge.svg?branch=master)](https://coveralls.io/github/bitcoincashjs/bchaddrjs?branch=master)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
@@ -7,11 +7,7 @@
 
 [![JavaScript Style Guide](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
 
-Plug & Play JavaScript library for all Bitcoin Cash address format translation needs. Easy-to-use, thoroughly tested, and feature complete.
-
-Support for the new Bitcoin Cash address [format](https://github.com/Bitcoin-UAHF/spec/blob/master/bchaddr.md) which improves upon [BIP 173](https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki), as well as the Bitpay and Legacy formats.
-
-Test out a demo address translator powered by BchAddr.js [here](https://bitcoincashjs.github.io/address/).
+Plug & Play JavaScript library for all TENT address format translation needs. Easy-to-use, thoroughly tested, and feature complete.
 
 ## Installation
 

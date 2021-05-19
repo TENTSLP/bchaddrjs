@@ -1,6 +1,6 @@
 {
   "name": "bchaddrjs",
-  "description": "Bitcoin Cash general purpose address translation.",
+  "description": "TENT general purpose address translation.",
   "main": "src/bchaddr.js",
   "authors": [
     "Emilio Almansi <hi@ealmansi.com>"
